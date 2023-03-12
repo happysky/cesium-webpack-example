@@ -3,6 +3,7 @@ import "cesium/Build/Cesium/Widgets/widgets.css";
 import appStatus from "./status";
 import amap from "./amap";
 import tencent from "./tencent";
+import { getCenterPosition } from './utils'
 import "../src/css/main.css"
 
 // Your access token can be found at: https://cesium.com/ion/tokens.
@@ -29,6 +30,11 @@ viewer.camera.flyTo({
 
 
 amap.init();
+
+// setInterval(() => {
+//   getCenterPosition(viewer);
+// }, 1000);
+
 // tencent.init();
 
   
