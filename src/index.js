@@ -1,5 +1,7 @@
-import { Ion, Viewer, createWorldTerrain, createOsmBuildings, Cartesian3, Math } from "cesium";
+import { Ion, Viewer, createWorldTerrain, createOsmBuildings, Cartesian3, Math, UrlTemplateImageryProvider } from "cesium";
 import "cesium/Build/Cesium/Widgets/widgets.css";
+import appStatus from "./status";
+import amap from "./amap";
 import "../src/css/main.css"
 
 // Your access token can be found at: https://cesium.com/ion/tokens.
@@ -8,11 +10,12 @@ Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJlYWE1O
 
 // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
 const viewer = new Viewer('cesiumContainer', {
-  terrainProvider: createWorldTerrain()
+  // terrainProvider: createWorldTerrain()
 });
+appStatus.viewer = viewer;
 
 // Add Cesium OSM Buildings, a global 3D buildings layer.
-viewer.scene.primitives.add(createOsmBuildings());   
+// viewer.scene.primitives.add(createOsmBuildings());   
 
 // Fly the camera to San Francisco at the given longitude, latitude, and height.
 viewer.camera.flyTo({
@@ -22,3 +25,8 @@ viewer.camera.flyTo({
     pitch : Math.toRadians(-90.0),
   }
 });
+
+
+amap.init();
+
+  
